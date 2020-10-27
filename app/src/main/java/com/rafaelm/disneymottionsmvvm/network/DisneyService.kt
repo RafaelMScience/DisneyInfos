@@ -1,5 +1,6 @@
 package com.rafaelm.disneymottionsmvvm.network
 
+import com.rafaelm.disneymottionsmvvm.model.Poster
 import com.skydoves.sandwich.ApiResponse
 import retrofit2.http.GET
 

@@ -1,6 +1,7 @@
 package com.rafaelm.disneymottionsmvvm.repository
 
 import androidx.annotation.WorkerThread
+import com.rafaelm.disneymottionsmvvm.database.PosterDao
 import com.rafaelm.disneymottionsmvvm.model.Poster
 import com.rafaelm.disneymottionsmvvm.network.DisneyService
 import com.skydoves.sandwich.message
