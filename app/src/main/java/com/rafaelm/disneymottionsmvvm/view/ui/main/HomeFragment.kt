@@ -1,25 +1,9 @@
 package com.rafaelm.disneymottionsmvvm.view.ui.main
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import com.rafaelm.disneymottionsmvvm.R
+import com.rafaelm.disneymottionsmvvm.base.DatabindingFragment
 
-class HomeFragment : Fragment() {
+class HomeFragment : DatabindingFragment() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
-    }
+    private lateinit var binding: FragmentHomeBinding
 
 }
