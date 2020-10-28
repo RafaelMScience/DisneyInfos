@@ -4,6 +4,7 @@ import android.view.View
 import androidx.core.view.ViewCompat
 import com.rafaelm.disneymottionsmvvm.databinding.ItemPosterBinding
 import com.rafaelm.disneymottionsmvvm.model.Poster
+import com.rafaelm.disneymottionsmvvm.view.ui.details.PosterDetailActivity
 import com.skydoves.baserecyclerviewadapter.BaseViewHolder
 
 class PosterViewHolder (view: View):BaseViewHolder(view){
@@ -25,7 +26,7 @@ class PosterViewHolder (view: View):BaseViewHolder(view){
     }
 
     override fun onClick(p0: View?) =
-        PosterDetailsActivity.startActivityModel(context(), binding.itemContainer, data)
+        PosterDetailActivity.startActivityModel(context(), binding.itemContainer, data)
 
     override fun onLongClick(p0: View?) = false
 }
