@@ -3,6 +3,7 @@ package com.rafaelm.disneymottionsmvvm.view.adapter
 import android.view.View
 import com.rafaelm.disneymottionsmvvm.R
 import com.rafaelm.disneymottionsmvvm.model.Poster
+import com.rafaelm.disneymottionsmvvm.view.ui.viewholder.PosterViewHolder
 import com.skydoves.baserecyclerviewadapter.BaseAdapter
 import com.skydoves.baserecyclerviewadapter.SectionRow
 
