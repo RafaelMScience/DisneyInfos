@@ -12,14 +12,14 @@ import com.google.android.material.transition.platform.MaterialContainerTransfor
 import com.rafaelm.disneymottionsmvvm.R
 
 /** get a material container arc transform. */
-internal fun getContentTransform(context: Context): MaterialContainerTransform{
+internal fun getContentTransform(context: Context): MaterialContainerTransform {
     return MaterialContainerTransform().apply {
         addTarget(android.R.id.content)
         duration = 450
         pathMotion = MaterialArcMotion()
         isElevationShadowEnabled = true
         startElevation = 9f
-        endElevation =9f
+        endElevation = 9f
         startContainerColor = ContextCompat.getColor(context, R.color.colorPrimary)
     }
 }
@@ -31,13 +31,8 @@ fun AppCompatActivity.applyExitMaterialTransform() {
     window.sharedElementsUseOverlay = false
 }
 
-/** returns a long value from intent's extra data.  */
-fun ComponentActivity.extraLong(key: String): Lazy<Long> {
-    return lazy { requireNotNull(intent.getLongExtra(key, -1).takeIf { it != 1L }) }
-}
-
 /** apply material entered container transformation. */
-fun AppCompatActivity.applyMaterialTransform(transitionName : String){
+fun AppCompatActivity.applyMaterialTransform(transitionName: String) {
     window.requestFeature(Window.FEATURE_ACTIVITY_TRANSITIONS)
     ViewCompat.setTransitionName(findViewById(android.R.id.content), transitionName)
 
@@ -45,4 +40,9 @@ fun AppCompatActivity.applyMaterialTransform(transitionName : String){
     setEnterSharedElementCallback(MaterialContainerTransformSharedElementCallback())
     window.sharedElementEnterTransition = getContentTransform(this)
     window.sharedElementReturnTransition = getContentTransform(this)
+}
+
+/** returns a long value from intent's extra data.  */
+fun ComponentActivity.extraLong(key: String): Lazy<Long> {
+    return lazy { requireNotNull(intent.getLongExtra(key, -1).takeIf { it != -1L }) }
 }

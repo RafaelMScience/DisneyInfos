@@ -1,29 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".view.ui.main.MainActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
-            name="viewModelMain"
+            name="vm"
             type="com.rafaelm.disneymottionsmvvm.view.ui.main.MainViewModel" />
-        
+
         <variable
             name="pagerAdapter"
             type="com.rafaelm.disneymottionsmvvm.view.ui.main.MainPagerAdapter" />
-        
+
         <variable
             name="viewPager"
             type="androidx.viewpager.widget.ViewPager" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/background">
 
         <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/app_bar_layout"
+            android:id="@+id/appBarLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
@@ -33,6 +34,7 @@
             <include
                 android:id="@+id/main_toolbar"
                 layout="@layout/toolbar_home" />
+
         </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.viewpager2.widget.ViewPager2
@@ -42,9 +44,8 @@
             app:bindNavigation="@{mainBottomNavigation}"
             app:layout_constraintBottom_toTopOf="@id/main_bottom_navigation"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/app_bar_layout"
-            app:pagerAdapter="@{pagerAdapter}"
-            />
+            app:layout_constraintTop_toBottomOf="@id/appBarLayout"
+            app:pagerAdapter="@{pagerAdapter}" />
 
         <com.skydoves.androidbottombar.AndroidBottomBarView
             android:id="@+id/main_bottom_navigation"
@@ -67,11 +68,12 @@
             android:id="@+id/progress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:gone="@{!viewModelMain.loading}"
+            app:gone="@{!vm.loading}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

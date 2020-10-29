@@ -16,7 +16,7 @@ import timber.log.Timber
 
 class MainRepository constructor(
     private val disneyService: DisneyService,
-    private val posterDAO: PosterDao
+    private val posterDao: PosterDao
 ) : Repository {
 
     init {
@@ -28,29 +28,29 @@ class MainRepository constructor(
         onSuccess: () -> Unit,
         onError: (String) -> Unit
     ) = flow {
-        val posters: List<Poster> = posterDAO.getPosterList()
+        val posters: List<Poster> = posterDao.getPosterList()
         if (posters.isEmpty()) {
-            //conection api
+            // request API network call asynchronously.
             disneyService.fetchDisneyPosterList().apply {
                 // handle the case when the API request gets a success response.
                 this.suspendOnSuccess {
                     data.whatIfNotNull {
-                        posterDAO.insertPosterList(it)
+                        posterDao.insertPosterList(it)
                         emit(it)
                         onSuccess()
                     }
                 }
+                    // handle the case when the API request gets an error response.
+                    // e.g. internal server error.
+                    .onError {
+                        onError(message())
+                    }
+                    // handle the case when the API request gets an exception response.
+                    // e.g. network connection error.
+                    .onException {
+                        onError(message())
+                    }
             }
-                // handle the case when the API request gets an error response.
-                // e.g. internal server error.
-                .onError {
-                    onError(message())
-                }
-                // handle the case when the API request gets an exception response.
-                // e.g. network connection error.
-                .onException {
-                    onError(message())
-                }
         } else {
             emit(posters)
             onSuccess()

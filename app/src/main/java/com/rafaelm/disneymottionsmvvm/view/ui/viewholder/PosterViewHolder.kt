@@ -7,17 +7,19 @@ import com.rafaelm.disneymottionsmvvm.model.Poster
 import com.rafaelm.disneymottionsmvvm.view.ui.details.PosterDetailActivity
 import com.skydoves.baserecyclerviewadapter.BaseViewHolder
 
-class PosterViewHolder (view: View):BaseViewHolder(view){
+class PosterViewHolder(view: View) : BaseViewHolder(view) {
+
     private lateinit var data: Poster
-    private val binding : ItemPosterBinding by bindings(view)
+    private val binding: ItemPosterBinding by bindings(view)
+
     override fun bindData(data: Any) {
-        if(data is Poster){
+        if (data is Poster) {
             this.data = data
             drawItemUI()
         }
     }
 
-    private fun drawItemUI(){
+    private fun drawItemUI() {
         binding.apply {
             ViewCompat.setTransitionName(binding.itemContainer, data.name)
             poster = data

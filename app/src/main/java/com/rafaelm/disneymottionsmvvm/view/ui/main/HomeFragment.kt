@@ -25,8 +25,8 @@ class HomeFragment : DatabindingFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return binding<FragmentHomeBinding> (inflater, R.layout.fragment_home, container).apply {
-            viewModelFrag = getSharedViewModel<MainViewModel>().apply { fetchDisneyPosterList() }
+        return binding<FragmentHomeBinding>(inflater, R.layout.fragment_home, container).apply {
+            viewModel = getSharedViewModel<MainViewModel>().apply { fetchDisneyPosterList() }
             lifecycleOwner = viewLifecycleOwner
             adapter = PosterAdapter()
             this@HomeFragment.binding = this

@@ -21,25 +21,25 @@ import com.skydoves.androidbottombar.BottomMenuItem
 import kotlin.math.abs
 
 @BindingAdapter("loadImage")
-fun bindLoadImage(view: AppCompatImageView, url: String){
+fun bindLoadImage(view: AppCompatImageView, url: String) {
     Glide.with(view.context)
         .load(url)
         .into(view)
 }
 
-@BindingAdapter("gone")
-fun bindGone(view: View, shouldBeGone: Boolean?){
-    if(shouldBeGone == true){
-        view.gone(true)
-    }else{
-        view.gone(false)
-    }
-}
-
-@BindingAdapter("pageAdapter")
+@BindingAdapter("pagerAdapter")
 fun bindPagerAdapter(view: ViewPager2, adapter: FragmentStateAdapter) {
     view.adapter = adapter
     view.offscreenPageLimit = 3
+}
+
+@BindingAdapter("gone")
+fun bindGone(view: View, shouldBeGone: Boolean?) {
+    if (shouldBeGone == true) {
+        view.gone(true)
+    } else {
+        view.gone(false)
+    }
 }
 
 @BindingAdapter("bindNavigation")
@@ -80,12 +80,12 @@ fun bindNavigation(view: ViewPager2, navigationView: AndroidBottomBarView) {
 fun bindAppBarLayoutWithFab(appBarLayout: AppBarLayout, fab: FloatingActionButton) {
     appBarLayout.addOnOffsetChangedListener(
         AppBarLayout.OnOffsetChangedListener { appBarLayout1: AppBarLayout, verticalOffset: Int ->
-            val verticalOffsetPorcentage = abs(
+            val verticalOffsetPercentage = abs(
                 verticalOffset
             ).toFloat() / appBarLayout1.totalScrollRange.toFloat()
-            if (verticalOffsetPorcentage > 0.4f && fab.isOrWillBeShown) {
+            if (verticalOffsetPercentage > 0.4f && fab.isOrWillBeShown) {
                 fab.hide()
-            } else if (verticalOffsetPorcentage <= 0.4f && fab.isOrWillBeHidden && fab.tag != View.GONE) {
+            } else if (verticalOffsetPercentage <= 0.4f && fab.isOrWillBeHidden && fab.tag != View.GONE) {
                 fab.show()
             }
         }
@@ -105,9 +105,9 @@ fun bindTransformFab(view: View, fab: FloatingActionButton, container: Coordinat
 
     view.setOnClickListener {
         fab.tag = View.VISIBLE
-        TransitionManager.beginDelayedTransition(container, getTransform(fab, view))
+        TransitionManager.beginDelayedTransition(container, getTransform(view, fab))
         fab.visible()
-        fab.gone(true)
+        view.gone(true)
     }
 }
 

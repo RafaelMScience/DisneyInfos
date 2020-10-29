@@ -15,4 +15,4 @@ data class Poster(
     val description: String,
     val plot: String,
     val poster: String
-): Parcelable
+) : Parcelable

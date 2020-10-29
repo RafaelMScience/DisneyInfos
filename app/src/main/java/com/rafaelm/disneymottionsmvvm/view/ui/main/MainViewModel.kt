@@ -15,7 +15,7 @@ class MainViewModel constructor(
 ) : LiveCoroutinesViewModel() {
 
     private var posterFetchingLiveData: MutableLiveData<Boolean> = MutableLiveData()
-    var posterListLiveData: LiveData<List<Poster>>
+    val posterListLiveData: LiveData<List<Poster>>
 
     private val _isLoading: MutableLiveData<Boolean> = MutableLiveData(false)
     val isLoading: LiveData<Boolean> get() = _isLoading
@@ -30,7 +30,7 @@ class MainViewModel constructor(
             _isLoading.postValue(true)
             launchOnViewModelScope {
                 this.mainRepository.loadDisneyPosters(
-                    onSuccess = { _isLoading.postValue(true) },
+                    onSuccess = { _isLoading.postValue(false) },
                     onError = { _toastLiveData.postValue(it) }
                 ).asLiveData()
             }
@@ -39,6 +39,6 @@ class MainViewModel constructor(
 
     @MainThread
     fun fetchDisneyPosterList() {
-        posterFetchingLiveData.value = false
+        posterFetchingLiveData.value = true
     }
 }

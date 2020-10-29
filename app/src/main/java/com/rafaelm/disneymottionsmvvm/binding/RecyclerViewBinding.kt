@@ -16,7 +16,7 @@ fun bindAdapter(view: RecyclerView, baseAdapter: BaseAdapter) {
 }
 
 @BindingAdapter("toast")
-fun bindToast(view: RecyclerView, text: String?){
+fun bindToast(view: RecyclerView, text: String?) {
     text.whatIfNotNullOrEmpty {
         Toast.makeText(view.context, it, Toast.LENGTH_SHORT).show()
     }

@@ -7,6 +7,7 @@ import org.koin.android.ext.koin.androidApplication
 import org.koin.dsl.module
 
 val persistenceModule = module {
+
     single {
         Room
             .databaseBuilder(
@@ -19,7 +20,5 @@ val persistenceModule = module {
             .build()
     }
 
-    single {
-        get<AppDatabase>().posterDao()
-    }
+    single { get<AppDatabase>().posterDao() }
 }

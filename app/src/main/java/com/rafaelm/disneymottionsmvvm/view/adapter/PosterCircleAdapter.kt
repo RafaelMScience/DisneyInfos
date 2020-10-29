@@ -10,6 +10,7 @@ import com.skydoves.baserecyclerviewadapter.BaseViewHolder
 import com.skydoves.baserecyclerviewadapter.SectionRow
 
 class PosterCircleAdapter : BaseAdapter() {
+
     init {
         addSection(arrayListOf<Poster>())
     }

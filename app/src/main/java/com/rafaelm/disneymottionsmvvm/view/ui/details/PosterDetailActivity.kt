@@ -9,12 +9,10 @@ import android.view.MenuItem
 import android.view.View
 import com.rafaelm.disneymottionsmvvm.R
 import com.rafaelm.disneymottionsmvvm.base.DatabindingActivity
-import com.rafaelm.disneymottionsmvvm.databinding.ActivityMainBinding
 import com.rafaelm.disneymottionsmvvm.databinding.ActivityPosterDetailBinding
 import com.rafaelm.disneymottionsmvvm.extensions.applyMaterialTransform
 import com.rafaelm.disneymottionsmvvm.extensions.extraLong
 import com.rafaelm.disneymottionsmvvm.model.Poster
-import kotlinx.android.synthetic.main.fragment_home.*
 import org.koin.android.viewmodel.ext.android.getViewModel
 
 class PosterDetailActivity : DatabindingActivity() {
@@ -24,7 +22,6 @@ class PosterDetailActivity : DatabindingActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         val poster = getViewModel<PosterDetailViewModel>().getPoster(posterId)
         applyMaterialTransform(poster.name)
         binding.apply {
@@ -37,17 +34,17 @@ class PosterDetailActivity : DatabindingActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if(item.itemId == android.R.id.home){
+        if (item.itemId == android.R.id.home) {
             onBackPressed()
         }
         return super.onOptionsItemSelected(item)
     }
 
-    companion object{
+    companion object {
         private const val posterKey = "posterKey"
 
-        fun startActivityModel(context: Context?, startView: View, poster: Poster){
-            if(context is Activity){
+        fun startActivityModel(context: Context?, startView: View, poster: Poster) {
+            if (context is Activity) {
                 val intent = Intent(context, PosterDetailActivity::class.java)
                 intent.putExtra(
                     posterKey,
@@ -58,7 +55,6 @@ class PosterDetailActivity : DatabindingActivity() {
                     startView,
                     poster.name
                 )
-
                 context.startActivity(intent, options.toBundle())
             }
         }
