@@ -6,19 +6,22 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.rafaelm.disneymottionsmvvm.R
+import com.rafaelm.disneymottionsmvvm.base.DatabindingFragment
+import com.rafaelm.disneymottionsmvvm.databinding.FragmentLibraryBinding
+import com.rafaelm.disneymottionsmvvm.view.adapter.PosterLineAdapter
+import org.koin.android.viewmodel.ext.android.getSharedViewModel
 
-class LibraryFragment : Fragment() {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
+class LibraryFragment : DatabindingFragment() {
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_library, container, false)
+        return binding<FragmentLibraryBinding>(inflater, R.layout.fragment_library, container).apply {
+            viewModel = getSharedViewModel<MainViewModel>().apply { fetchDisneyPosterList() }
+            lifecycleOwner = viewLifecycleOwner
+            adapter = PosterLineAdapter()
+        }.root
     }
 }
