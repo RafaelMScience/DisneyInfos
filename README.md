@@ -43,7 +43,7 @@ Recyclerview was used to show the message on one side of a color and the other c
 - [x] Transition next activity
 - [x] Glide Image
 
-# :camera: Images app IA-Help
+# :camera: Screenshots
 <img src="https://github.com/RafaelMScience/Archives/blob/main/DisneyInfos/DisneyList.jpeg?raw=true" width="200"> <img src="https://github.com/RafaelMScience/Archives/blob/main/DisneyInfos/DisneyMain.jpeg?raw=true" width="200"> <img src="https://github.com/RafaelMScience/Archives/blob/main/DisneyInfos/DisneyRadio.jpeg?raw=true" width="200"> <img src="https://github.com/RafaelMScience/Archives/blob/main/DisneyInfos/DisneyInfoMovie.jpeg?raw=true" width="200">
 
 # Info Extras
